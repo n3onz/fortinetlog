@@ -4,6 +4,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=8; IE=EDGE">
     <meta http-equiv="pragma" content="no-cache">
     <meta name="viewport" content="width=device-width, initial-scale=1"><link href="/css/main-green.css" rel="stylesheet" type="text/css">
+    <script type='text/javascript'>
+      (function() {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            try {
+              window.fgt_lang = JSON.parse(xhr.responseText);
+            } catch (e) {
+              console.error('Failed to parse language JSON');
+            }
+          }
+        };
+        xhr.open('GET', '/416739ce08a963eb52ca2555ee3aedde/lang/en.json', false);
+        xhr.send();
+      })()
+    ;</script>
     <script language="JavaScript">
       if (top.location != window.location) top.location.reload();
       if (window.opener) {window.opener.top.location.reload(); self.close();}
